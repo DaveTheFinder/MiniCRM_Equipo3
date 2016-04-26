@@ -86,7 +86,7 @@ app.controller("contactoController", function ($scope, contactoService) {
     };
 
     $scope.clearCurrentContacto = function () {
-        $scope.contacto = { Id: 0, Nombre: '', Correo: '', Telefono: 0 };
+        $scope.contacto = { Id: 0, Nombre: '', Correo: '', Telefono: 0, };
 
     };
 });
@@ -97,7 +97,7 @@ app.controller("anotacionController", function ($scope, anotacionService) {
     $scope.errors = [];
 
     $scope.anotaciones = anotacionService.query();
-
+    
     $scope.anotacion = {
         Id: 0,
         Fecha: '',
@@ -106,8 +106,18 @@ app.controller("anotacionController", function ($scope, anotacionService) {
     };
 
     $scope.selectAnotacion = function (anot) {
+        anot.Fecha = new Date(anot.Fecha);
         $scope.anotacion = anot;
         $scope.showUpdateDialog();
+    };
+
+    $scope.displayAnotacion = function () {
+        $('#modal-dialog').modal('hide');
+        $('#modal-content').modal('show');
+        var reader = new commonmark.Parser();
+        var writer = new commonmark.HtmlRenderer();
+        var parsed = reader.parse($scope.anotacion.Descripcion);
+        $scope.commonMark = writer.render(parsed);
     };
 
     $scope.deleteAnotacion = function (anotacion) {

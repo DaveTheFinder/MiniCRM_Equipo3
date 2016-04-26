@@ -53,6 +53,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button class="btn btn-primary" ng-click="saveAnotacion()">Guardar</button>
+                    <button class="btn btn-primary" ng-click="displayAnotacion()">Ver Anotaciones... </button>
                 </div>
             </div>
         </div>
@@ -70,14 +71,17 @@
                 </tr>
             </thead>
             <tbody ng-repeat="anot in anotaciones">
-                <tr>
+                <tr ng-click="selectAnotacion(anot)">
                     <td> <span>{{anot.Id}}</span></td>
                     <td> <span>{{anot.Fecha}}</span></td>
                     <td> <span>{{anot.Descripcion}}</span></td>
-                    <td> <span>{{anot.ContactoId}}</span></td>
-                    <td> <button class="btn btn-danger" ng-click="deleteAnotacion(anot)"> Borrar </button></td>
+                    <td> <span>{{anot.Contacto.Nombre}}</span></td>
+                    <td> <button class="btn btn-danger" ng-click="deleteAnotacion(anot); $event.stopPropagation()"> Borrar </button></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <div class="lead" ng-bind-html="page.Content"></div>
+
 </div>
