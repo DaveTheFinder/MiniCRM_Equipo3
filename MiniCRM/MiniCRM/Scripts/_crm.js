@@ -83,16 +83,18 @@ app.controller("contactoController", function ($scope, contactoService) {
         else {
             contactoService.save($scope.contacto, $scope.refreshData, $scope.errorMessage);
         }
-
     };
 
     $scope.clearCurrentContacto = function () {
-        $scope.contacto = { Id: 0, Name: '' };
+        $scope.contacto = { Id: 0, Nombre: '', Correo: '', Telefono: 0 };
 
     };
 });
 
 app.controller("anotacionController", function ($scope, anotacionService) {
+
+    $scope.title = '';
+    $scope.errors = [];
 
     $scope.anotaciones = anotacionService.query();
 
@@ -103,27 +105,58 @@ app.controller("anotacionController", function ($scope, anotacionService) {
         ContactoId: 0
     };
 
+    $scope.selectAnotacion = function (anot) {
+        $scope.anotacion = anot;
+        $scope.showUpdateDialog();
+    };
+
     $scope.deleteAnotacion = function (anotacion) {
-        anotacionService.remove(anotacion, $scope.refreshData);
+        anotacionService.remove(anotacion, $scope.refreshData, $scope.errorMessage);
     };
 
     $scope.refreshData = function () {
         $scope.anotaciones = anotacionService.query();
+        $('#modal-dialog').modal('hide');
+    };
+
+    $scope.errorMessage = function (response) {
+        var errors = [];
+        for (var key in response.data.ModelState) {
+            for (var i = 0; i < response.data.ModelState[key].length; i++) {
+                errors.push(response.data.ModelState[key][i]);
+            }
+        }
+        $scope.errors = errors;
+    };
+
+    $scope.clearErrors = function () {
+        $scope.errors = [];
+    };
+
+    $scope.showUpdateDialog = function () {
+        $scope.clearErrors();
+        $scope.title = 'Actualiza Anotacion';
+        $('#modal-dialog').modal('show');
     };
 
     $scope.showAddDialog = function () {
+        $scope.clearErrors();
+        $scope.clearCurrentAnotacion();
+        $scope.title = 'Agrega Anotacion';
         $('#modal-dialog').modal('show');
     };
 
     $scope.saveAnotacion = function () {
-        anotacionService.save($scope.anotacion, $scope.refreshData);
-        $('#modal-dialog').modal('hide');
-
-        $scope.clearCurrentAnotacion();
+        if ($scope.anotacion.Id > 0) {
+            anotacionService.update($scope.anotacion, $scope.refreshData, $scope.errorMessage);
+        }
+        else {
+            anotacionService.save($scope.anotacion, $scope.refreshData, $scope.errorMessage);
+        }
     };
 
     $scope.clearCurrentAnotacion = function () {
-        $scope.anotacion = { Id: 0, Name: '', Position: '', DepartmentId: 0, };
+        $scope.anotacion = { Id: 0, Fecha: '', Anotacion:'', ContactotId: 0, };
     };
 
 });
