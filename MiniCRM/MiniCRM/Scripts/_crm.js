@@ -17,7 +17,7 @@ app.factory('anotacionService', function ($resource) {
 });
 
 
-app.controller("mainController", function ($scope, $sce, anotacionService) {
+app.controller("mainController", function ($scope, $sce, contactoService) {
 
     
 
@@ -114,7 +114,7 @@ app.controller("anotacionController", function ($scope, anotacionService) {
     };
 
     $scope.displayAnotacion = function () { 
-        $('#modal-dialog').modal('hide');
+        $('#modal-update').modal('hide');
         $('#modal-content').modal('show');
         var reader = new commonmark.Parser();
         var writer = new commonmark.HtmlRenderer();
@@ -148,7 +148,7 @@ app.controller("anotacionController", function ($scope, anotacionService) {
     $scope.showUpdateDialog = function () {
         $scope.clearErrors();
         $scope.title = 'Actualiza Anotacion';
-        $('#modal-dialog').modal('show');
+        $('#modal-update').modal('show');
     };
 
     $scope.showAddDialog = function () {
@@ -175,6 +175,7 @@ app.controller("anotacionController", function ($scope, anotacionService) {
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
+        templateUrl: '/Content/Views/admin.html',
         controller: 'mainController'
     }).when('/anotaciones', {
         templateUrl: '/Content/Views/Anotaciones.html',

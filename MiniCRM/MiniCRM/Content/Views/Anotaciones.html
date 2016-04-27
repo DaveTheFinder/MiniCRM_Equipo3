@@ -11,7 +11,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Agregar Anotacion</h4>
+                    <h4 class="modal-title">{{title}}</h4>
                 </div>
                 <div class="modal-body">
                     <div class="container">
@@ -38,6 +38,58 @@
                                 <div class="form-group">
                                     <label for="id" class="col-sm-2 control-label">Contacto</label>
                                     <div class="col-sm-10">
+                                        <select ng-controller="contactoController" ng-model="anotacion.ContactoId">
+                                            <option ng-repeat="contacto in contactos" value="{{contacto.Id}}">{{contacto.Nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="form-group has-error">
+                                <div ng-repeat="error in errors" class="control-label">{{error}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" ng-click="saveAnotacion()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-update">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form class="form-horizontal" name="form">
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Id</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="id" readonly="readonly" ng-model="anotacion.Id" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Fecha</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" id="fecha" ng-required ng-model="anotacion.Fecha" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Descripción</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" ng-required ng-model="anotacion.Descripcion" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Contacto</label>
+                                    <div class="col-sm-10">
                                         <input type="text" class="form-control" id="id" readonly="readonly" ng-model="anotacion.Contacto.Nombre" />
                                     </div>
                                 </div>
@@ -51,7 +103,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button class="btn btn-primary" ng-click="saveAnotacion()">Guardar</button>
-                    <button class="btn btn-primary" ng-click="displayAnotacion()">Ver Anotaciones... </button>
                 </div>
             </div>
         </div>
@@ -87,7 +138,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Fecha</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                     <th>Contacto</th>
                     <th></th>
                 </tr>

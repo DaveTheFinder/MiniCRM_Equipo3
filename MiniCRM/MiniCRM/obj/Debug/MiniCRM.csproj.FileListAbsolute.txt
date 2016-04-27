@@ -58,6 +58,6 @@ C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\bin\System.Web.We
 C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\bin\System.Web.WebPages.Razor.xml
 C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\bin\Antlr3.Runtime.pdb
-C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\obj\Debug\MiniCRM.csprojResolveAssemblyReference.cache
 C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\obj\Debug\MiniCRM.dll
 C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\obj\Debug\MiniCRM.pdb
+C:\Users\Dave\Documents\GitHub\MiniCRM_Equipo3\MiniCRM\MiniCRM\obj\Debug\MiniCRM.csprojResolveAssemblyReference.cache
