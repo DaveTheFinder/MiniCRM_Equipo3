@@ -1,4 +1,4 @@
-﻿var app = angular.module("crm", ["ngResource", "ngRoute"]);
+﻿var app = angular.module("crm", ["ngResource", "ngRoute", 'ngSanitize']);
 
 app.factory('contactoService', function ($resource) {
     return $resource('/api/contactos/:id',
@@ -17,7 +17,9 @@ app.factory('anotacionService', function ($resource) {
 });
 
 
-app.controller("mainController", function ($scope) {
+app.controller("mainController", function ($scope, $sce, anotacionService) {
+
+    
 
 });
 

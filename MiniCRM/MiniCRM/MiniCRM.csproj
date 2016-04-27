@@ -208,6 +208,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Views\admin.html" />
     <Content Include="Content\Views\Anotaciones.html" />
     <Content Include="Content\Views\Contactos.html" />
     <Content Include="favicon.ico" />

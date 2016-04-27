@@ -11,7 +11,8 @@ namespace MiniCRM
             //Angular.js Bundle
             bundles.Add(new ScriptBundle("~/bundles/angularjs").Include("~/Scripts/angular.js",
                 "~/Scripts/angular-route.js",
-                "~/Scripts/angular-resource.js"));
+                "~/Scripts/angular-resource.js",
+                "~/Scripts/angular-sanitize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));

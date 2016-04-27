@@ -38,9 +38,7 @@
                                 <div class="form-group">
                                     <label for="id" class="col-sm-2 control-label">Contacto</label>
                                     <div class="col-sm-10">
-                                        <select ng-controller="contactoController" ng-model="anotacion.ContactoId">
-                                            <option ng-repeat="contacto in contactos" value="{{contacto.Id}}">{{contacto.Nombre}}</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="id" readonly="readonly" ng-model="anotacion.Contacto.Nombre" />
                                     </div>
                                 </div>
                             </form>
