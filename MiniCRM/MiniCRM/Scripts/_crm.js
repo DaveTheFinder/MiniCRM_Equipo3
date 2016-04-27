@@ -111,7 +111,7 @@ app.controller("anotacionController", function ($scope, anotacionService) {
         $scope.showUpdateDialog();
     };
 
-    $scope.displayAnotacion = function () {
+    $scope.displayAnotacion = function () { 
         $('#modal-dialog').modal('hide');
         $('#modal-content').modal('show');
         var reader = new commonmark.Parser();
