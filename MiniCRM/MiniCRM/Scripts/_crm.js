@@ -34,8 +34,7 @@ app.controller("contactoController", function ($scope, contactoService) {
         Id: 0,
         Nombre: '',
         Correo: '',
-        Telefono: 0,
-        Anotaciones:0
+        Telefono: 0
     };
 
     $scope.selectContacto = function (dpmt) {
@@ -79,14 +78,6 @@ app.controller("contactoController", function ($scope, contactoService) {
         $('#modal-dialog').modal('show');
     };
 
-    $scope.displayAnotacion = function () {
-        $('#modal-update').modal('hide');
-        $('#modal-content').modal('show');
-        var reader = new commonmark.Parser();
-        var writer = new commonmark.HtmlRenderer();
-        var parsed = reader.parse($scope.contacto.Anotaciones.Descripcion);
-        $scope.commonMark = writer.render(parsed);
-    };
 
     $scope.saveContacto = function () {
         if ($scope.contacto.Id > 0) {
@@ -99,14 +90,8 @@ app.controller("contactoController", function ($scope, contactoService) {
 
     $scope.clearCurrentContacto = function () {
         $scope.contacto = { Id: 0, Nombre: '', Correo: '', Telefono: 0, };
-
     };
 
-    $scope.selectAnotacion = function (anot) {
-        anot.Anotaciones.Fecha = new Date(anot.Anotaciones.Fecha);
-        $scope.contacto = anot;
-        $scope.showUpdateDialog();
-    };
 });
 
 app.controller("anotacionController", function ($scope, anotacionService) {

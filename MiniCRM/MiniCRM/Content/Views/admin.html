@@ -1,4 +1,4 @@
-﻿  <div ng-controller="contactoController">
+﻿  <div ng-controller="anotacionController">
         <h2>¡Bienvenido!</h2>
 
         <div class="modal fade" id="modal-update">
@@ -55,12 +55,12 @@
                 </thead>
                 <tbody ng-repeat="anot in contactos">
                     <tr ng-click="selectAnotacion(cont)">
-                        <td> <span>{{anot.Id}}</span></td>
-                        <td> <span>{{anot.Nombre}}</span></td>
-                        <td> <span>{{anot.Correo}}</span></td>
-                        <td> <span>{{anot.Telefono}}</span></td>
-                        <td> <span>{{anot.Anotaciones.Fecha}}</span></td>
-                        <td> <span>{{anot.Anotaciones.Descripcion}}</span></td>
+                        <td> <span>{{anot.Contacto.Id}}</span></td>
+                        <td> <span>{{anot.Contacto.Nombre}}</span></td>
+                        <td> <span>{{anot.Contacto.Correo}}</span></td>
+                        <td> <span>{{anot.Contacto.Telefono}}</span></td>
+                        <td> <span>{{anot.Fecha}}</span></td>
+                        <td> <span>{{anot.Descripcion}}</span></td>
                         <td> <button class="btn btn-danger" ng-click="deleteAnotacion(anot); $event.stopPropagation()"> Borrar </button></td>
                     </tr>
                 </tbody>
